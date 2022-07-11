@@ -33,6 +33,13 @@ function TodoProvider(props) {
     newTodos[todoIndex].completed = true;
     saveTodo(newTodos);
   };
+
+  const addTodo = (text) => {
+    
+    const newTodos = [...todos]; //copia inmutable
+    newTodos.push({text:text,completed:false});
+    saveTodo(newTodos);
+  };
   const deleteTodo = (text) => {
     const todoIndex = todos.findIndex((todo) => todo.text === text);
     const newTodos = [...todos]; //copia inmutable
@@ -52,7 +59,8 @@ function TodoProvider(props) {
         searchedTodos,
         completeTodo,
         deleteTodo,
-        openModal,setOpenModal
+        openModal,setOpenModal,
+        addTodo
       }}
     >
       {props.children}
